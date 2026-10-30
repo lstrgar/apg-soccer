@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Analytic Policy Gradients for Contact-Rich Loco-Manipulation in Soft Robots</title>
+  <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "STIX Two Text", "Times New Roman", Times, serif;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #000;
+      background: #fff;
+      max-width: 42em;
+      margin: 3em auto;
+      padding: 0 1em;
+    }
+    h1 { font-size: 1.8em; line-height: 1.2; font-weight: 700; margin: 0 0 0.3em; text-wrap: balance; }
+    .abstract { text-align: justify; hyphens: auto; }
+    video { width: 100%; height: auto; aspect-ratio: 2178 / 1746; display: block; margin: 0 0 0.5em; }
+    .caption { font-size: 0.9em; margin: 0 auto 2em; text-align: center; text-wrap: pretty; }
+    .note { font-size: 0.9em; font-style: italic; }
+    h2 { font-size: 1.2em; font-weight: 700; margin: 2em 0 0.5em; }
+    p  { margin: 0 0 1em; }
+    hr { border: 0; border-top: 1px solid #000; margin: 2em 0; }
+    hr + h2 { margin-top: 0; }
+  </style>
+</head>
+<body>
+
+<h1>Analytic Policy Gradients for Contact-Rich Loco-Manipulation in Soft Robots</h1>
+<p>Luke Strgar &amp; Sam Kriegman, Northwestern University</p>
+<p>Under review at ICLR 2027</p>
+<p><a href="./assets/preprint_strgar2026.pdf">Paper (PDF, preprint)</a></p>
+
+<hr>
+
+<h2>Abstract</h2>
+<p class="abstract">Analytic policy gradients are widely considered impractical for contact-rich manipulation, where contact discontinuities induce bias and stiff or chaotic dynamics can produce high-variance estimates and exploding gradients over long horizons. Contrary to this view, we demonstrate contact-rich, soccer-inspired loco-manipulation in soft robots with up to 2,420 actuated springs, trained end-to-end with first-order gradients through simulation and control. On one commodity GPU, a single agent learned to locate, pursue, dribble, and kick the ball through the goal in 100 gradient steps&mdash;less than a minute of wall-clock time. In multi-agent settings, cooperative &ldquo;passing&rdquo; emerged strictly from task loss without explicit behavioral shaping, and in a competitive setting a defender&mdash;tasked with preventing goals&mdash;reduced its opponents&rsquo; scoring rate by up to 60%. Gradient analysis reveals that sustained contact events inflate gradient energy by up to two orders of magnitude and leave per-window gradients largely misaligned, yet batch aggregation yields a reliable training signal. We also find that gradient energy is skewed away from the wide output layer that drives spring actuation, starving it of the sparse contact-mediated learning signal under plain stochastic gradient descent (SGD). With per-layer rescaling, SGD nearly matches Adam without per-coordinate adaptation. We release our simulator and task environment as a scalable, fully differentiable foundation for contact-rich, multi-agent learning.</p>
+
+<hr>
+
+<h2>Videos</h2>
+<p class="note">Playback speed adjusted for viewing.</p>
+
+<video src="./assets/quadruped_clean.mp4#t=0.001" controls muted loop playsinline preload="metadata"></video>
+<p class="caption">A quadruped learned to locate, pursue, dribble, and score in 100 gradient steps (under a minute).</p>
+
+<video src="./assets/other_morphologies_clean.mp4#t=0.001" controls muted loop playsinline preload="metadata"></video>
+<p class="caption">The method extends to other morphologies: a biped and a hexapod.</p>
+
+<video src="./assets/cooperative_clean.mp4#t=0.001" controls muted loop playsinline preload="metadata"></video>
+<p class="caption">A cooperative pair with a shared policy exhibited emergent &ldquo;passing&rdquo; without explicit behavioral shaping.</p>
+
+<video src="./assets/competitive_clean.mp4#t=0.001" controls muted loop playsinline preload="metadata"></video>
+<p class="caption">In the competitive setting, a defender (white) trained to prevent goals reduced the pair&rsquo;s scoring rate.</p>
+
+<hr>
+
+<p>Code and simulator will be released upon publication.</p>
+
+</body>
+</html>
